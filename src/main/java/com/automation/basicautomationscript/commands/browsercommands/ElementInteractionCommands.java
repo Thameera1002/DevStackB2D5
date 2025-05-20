@@ -13,11 +13,17 @@ public class ElementInteractionCommands {
         driver.manage().window().maximize();
         driver.navigate().to("https://www.bing.com/");
         driver.findElement(By.name("q")).sendKeys("iphone shops in sri lanka");
+        Thread.sleep(3000);
         driver.findElement(By.id("search_icon")).click();
         Thread.sleep(3000);
         List<WebElement> elements = driver.findElements(By.cssSelector("[class='bm_details_overlay'] h2"));
-        for (WebElement element : elements) {
-            System.out.println(element.getText());
+        List<WebElement> elementsLinks = driver.findElements(By.cssSelector("[class='bm_details_overlay'] a"));
+        if(elements.size() == elementsLinks.size()){
+            for (int i = 0; i < elements.size(); i++) {
+                System.out.println(elements.get(i).getText());
+                System.out.println(elementsLinks.get(i).getAttribute("href"));
+            }
         }
+
     }
 }
