@@ -8,7 +8,8 @@ import org.openqa.selenium.WebDriver;
 public class AlertCommands {
     public static void main(String[] args) throws InterruptedException {
 //        alertWithOK();
-        alertWithOkAndCancel();
+//        alertWithOkAndCancel();
+        alertWithTextBox();
     }
 
     public static void alertWithOK() throws InterruptedException {
@@ -40,5 +41,22 @@ public class AlertCommands {
         alert.dismiss();
         System.out.println(driver.findElement(By.id("demo")).getText());
 
+    }
+
+    public static void alertWithTextBox() throws InterruptedException {
+        WebDriver driver = WebDriverManager.chromedriver().create();
+        driver.manage().window().maximize();
+        driver.get("https://demo.automationtesting.in/Alerts.html");
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//a[text()='Alert with Textbox ']")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.cssSelector("[class='btn btn-info']")).click();
+        Thread.sleep(3000);
+        Alert alert = driver.switchTo().alert();
+        System.out.println(alert.getText());
+        alert.sendKeys("Hello World");
+        Thread.sleep(3000);
+        alert.accept();
+        System.out.println(driver.findElement(By.id("demo1")).getText());
     }
 }
