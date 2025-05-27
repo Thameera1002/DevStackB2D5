@@ -1,16 +1,14 @@
 package com.automation.basicautomationscript.commands.browsercommands;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 public class MouseActionCommands {
     public static void main(String[] args) throws InterruptedException {
 //        testDoubleClickAction();
-        testContextClickAction();
+//        testContextClickAction();
+        testSliderAction();
     }
 
     public static void testDoubleClickAction() {
@@ -37,5 +35,21 @@ public class MouseActionCommands {
         Alert alert = driver.switchTo().alert();
         System.out.println(alert.getText());
         alert.accept();
+    }
+
+    public static void testSliderAction(){
+        WebDriver driver = WebDriverManager.chromedriver().create();
+        driver.manage().window().maximize();
+        driver.get("https://www.lambdatest.com/selenium-playground/drag-drop-range-sliders-demo");
+        WebElement slider = driver.findElement((By.cssSelector("input[value='5']")));
+        WebElement value = driver.findElement((By.id("range")));
+        System.out.println("Initial Value : "+value.getText());
+        Point pointer = slider.getLocation();
+        int x = pointer.getX();
+        int y = pointer.getY();
+        System.out.println("X coordination : "+x+"\nY coordination : "+y);
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(slider).moveByOffset(5,0).release().build().perform();
+        System.out.println("New Value : "+value.getText());
     }
 }
