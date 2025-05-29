@@ -25,6 +25,12 @@ public class ReadWriteProperty {
 
     }
 
+    public String loadProperty(String key) throws IOException {
+        InputStream inputStream = new FileInputStream(FILE_NAME);
+        properties.load(inputStream);
+        return properties.getProperty(key);
+    }
+
     public static void main(String[] args) throws IOException {
 //        new ReadWriteProperty().writeProperty();
         new ReadWriteProperty().readProperty();
