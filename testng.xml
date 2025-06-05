@@ -10,6 +10,9 @@
                     <include name="testMethod3"/>
                 </methods>
             </class>
+            <class name="TestNGMain">
+
+            </class>
         </classes>
     </test>
 </suite>
