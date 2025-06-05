@@ -3,17 +3,24 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true"
           name="/Users/thameeramalinga/DeveloperStackQA/2025/B2/Day02/BasicAutomationScript/src/test/java/TestNGAnnotationOrder.java">
+        <groups>
+            <run>
+                <exclude name="smoke"/>
+                <include name="regression"/>
+            </run>
+        </groups>
         <classes>
-            <class name="TestNGAnnotationOrder">
-                <methods>
-                    <include name="testMethod1"/>
-                    <include name="testMethod2"/>
-                    <exclude name="testMethod3"/>
-                </methods>
-            </class>
+<!--            <class name="TestNGAnnotationOrder">-->
+<!--                <methods>-->
+<!--                    <include name="testMethod1"/>-->
+<!--                    <include name="testMethod2"/>-->
+<!--                    <exclude name="testMethod3"/>-->
+<!--                </methods>-->
+<!--            </class>-->
 <!--            <class name="TestNGMain">-->
 
 <!--            </class>-->
+            <class name="TestNGGroups"></class>
         </classes>
     </test>
 </suite>
