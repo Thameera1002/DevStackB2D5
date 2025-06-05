@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="/Users/thameeramalinga/DeveloperStackQA/2025/B2/Day02/BasicAutomationScript/src/test/java/TestNGAnnotationOrder.java">
+        <classes>
+            <class name="TestNGAnnotationOrder">
+                <methods>
+                    <include name="testMethod1"/>
+                    <include name="testMethod3"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
