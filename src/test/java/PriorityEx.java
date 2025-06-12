@@ -21,4 +21,9 @@ public class PriorityEx {
     public void method5(){
         System.out.println("method5");
     }
+
+    @Test(priority = -1)
+    public void method6(){
+        System.out.println("method6");
+    }
 }
