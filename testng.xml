@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true"
-          name="/Users/thameeramalinga/DeveloperStackQA/2025/B2/Day02/BasicAutomationScript/src/test/java/CombinedEx.java">
-        <groups>
-            <run>
-                <exclude name="smoke"/>
-                <include name="regression"/>
-            </run>
-        </groups>
+    <test verbose="2" preserve-order="true" parallel="classes" thread-count="4"
+          name="/Users/thameeramalinga/DeveloperStackQA/2025/B2/Day02/BasicAutomationScript/src/test/java/testThreadLocal">
         <classes>
-            <class name="CombinedEx"></class>
+            <class name="testThreadLocal.TestA"></class>
+            <class name="testThreadLocal.TestB"></class>
         </classes>
     </test>
 </suite>
