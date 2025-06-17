@@ -6,14 +6,14 @@ public class TestA extends BaseTest{
 
     @Test
     public void testA1() throws InterruptedException {
-        driver.get("https://example.com/");
-        System.out.println(driver.getTitle());
+        ThreadLocalWebDriverManager.getDriver().get("https://example.com/");
+        System.out.println(ThreadLocalWebDriverManager.getDriver().getTitle());
         Thread.sleep(1500);
     }
     @Test
     public void testA2() throws InterruptedException {
-        driver.get("https://www.google.com/");
-        System.out.println(driver.getTitle());
+        ThreadLocalWebDriverManager.getDriver().get("https://www.google.com/");
+        System.out.println(ThreadLocalWebDriverManager.getDriver().getTitle());
         Thread.sleep(1500);
     }
 }
