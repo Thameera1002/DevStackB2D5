@@ -17,6 +17,8 @@ public class EbayHomePage extends BasePage {
     @FindBy(id = "gh-search-btn")
     private WebElement searchButton;
 
+    String searchType;
+
     public EbayHomePage(WebDriver driver) {
         super(driver);
     }
@@ -27,12 +29,18 @@ public class EbayHomePage extends BasePage {
     }
 
     public void selectCategory(String category){
+        searchType = category;
         new Select(selectCategory).selectByVisibleText(category);
     }
 
-    public MobileResultPage clickOnSearchButton(){
+    public <T> T clickOnSearchButton(){
         searchButton.click();
-        return PageFactory.initElements(driver, MobileResultPage.class);
+        if (searchType.equals(" Cell Phones & Accessories")){
+            return (T) PageFactory.initElements(driver, MobileResultPage.class);
+        }else if (searchType.equals(" Clothing, Shoes & Accessories")){
+            return (T) PageFactory.initElements(driver, DressResultPage.class);
+        }
+        return null;
     }
 
 }
