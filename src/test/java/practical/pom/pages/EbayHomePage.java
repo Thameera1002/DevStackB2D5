@@ -1,10 +1,12 @@
 package practical.pom.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class EbayHomePage{
+public class EbayHomePage extends BasePage {
 
     @FindBy(id = "gh-ac")
     private WebElement searchField;
@@ -15,6 +17,10 @@ public class EbayHomePage{
     @FindBy(id = "gh-search-btn")
     private WebElement searchButton;
 
+    public EbayHomePage(WebDriver driver) {
+        super(driver);
+    }
+
 
     public void typeOnSearchField(String searchText){
         searchField.sendKeys(searchText);
@@ -24,8 +30,9 @@ public class EbayHomePage{
         new Select(selectCategory).selectByVisibleText(category);
     }
 
-    public void clickOnSearchButton(){
+    public MobileResultPage clickOnSearchButton(){
         searchButton.click();
+        return PageFactory.initElements(driver, MobileResultPage.class);
     }
 
 }
