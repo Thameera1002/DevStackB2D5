@@ -9,6 +9,15 @@
                     <include name="method1"/>
                     <include name="method2"/>
                     <include name="method3"/>
+                    <exclude name="method4"/>
+                    <exclude name="method5"/>
+                </methods>
+            </class>
+            <class name="practical.pom.parallelExecutionTest.TestB">
+                <methods>
+                    <exclude name="method1"/>
+                    <exclude name="method2"/>
+                    <exclude name="method3"/>
                     <include name="method4"/>
                     <include name="method5"/>
                 </methods>
