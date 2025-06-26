@@ -10,7 +10,6 @@ public class SkipTestEx {
     public void testB(){
         System.out.println("This is testB");
     }
-
     @Test
     public void testC(){
         System.out.println("This is testC");
