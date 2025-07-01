@@ -49,4 +49,10 @@ public class ExtentReportManager {
         }
     }
 
+    public static void flushReport() {
+        if(Objects.nonNull(test)) {
+            extent.flush();
+        }
+    }
+
 }
