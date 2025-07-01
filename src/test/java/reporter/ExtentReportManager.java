@@ -2,6 +2,7 @@ package reporter;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
@@ -58,6 +59,12 @@ public class ExtentReportManager {
     public static void flushReport() {
         if(Objects.nonNull(test)) {
             extent.flush();
+        }
+    }
+
+    public static void logFailWithScreenshot(String message,String base64Screenshot) {
+        if(Objects.nonNull(test)) {
+            test.fail(message, MediaEntityBuilder.createScreenCaptureFromBase64String(base64Screenshot).build());
         }
     }
 
