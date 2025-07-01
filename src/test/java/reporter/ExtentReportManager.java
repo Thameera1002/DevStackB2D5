@@ -31,6 +31,12 @@ public class ExtentReportManager {
         }
     }
 
+    public static void infoStepPass(String message) {
+        if(Objects.nonNull(test)) {
+            test.pass(message);
+        }
+    }
+
     public static void logFail(String message) {
         if(Objects.nonNull(test)) {
             test.log(Status.FAIL, message);
