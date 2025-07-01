@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class MobileResultPage extends BasePage {
 
-    @FindBy(xpath = "//span[text()='Apple']")
+    @FindBy(xpath = "//span[text()='Apple..']")
     private WebElement appleCheckBox;
 
     public MobileResultPage(WebDriver driver) {
