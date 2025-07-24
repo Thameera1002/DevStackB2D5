@@ -17,4 +17,14 @@ public class PageLogin extends BasePage{
 
     @AndroidFindBy(accessibility = "button-LOGIN")
     private WebElement btn_login;
+
+    public void fillUserName(String userName) {
+        tf_userName.sendKeys(userName);
+    }
+    public void fillPassword(String password) {
+        tf_password.sendKeys(password);
+    }
+    public void clickLogin() {
+        btn_login.click();
+    }
 }
