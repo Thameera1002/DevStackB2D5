@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
@@ -19,7 +20,7 @@ public class TestNGUtil {
 
     @Parameters("platformName")
     @BeforeTest
-    public void initCapabilities(String platformName) throws MalformedURLException {
+    public void initCapabilities(@Optional("Android") String platformName) throws MalformedURLException {
         URL url = new URL("http://127.0.0.1:4723");
         if(platformName.equalsIgnoreCase("Android")){
             driver = new AndroidDriver(url,CapabilityOptions.getAndroidCapabilities());
