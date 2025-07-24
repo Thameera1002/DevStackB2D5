@@ -21,6 +21,7 @@ public class CapabilityOptions {
         options.setDeviceName("Test Device");
         options.setAppPackage("com.wdiodemoapp");
         options.setAppActivity(".MainActivity");
+        options.setApp(file.getAbsolutePath());
         return options;
     }
 
