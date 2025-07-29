@@ -25,6 +25,12 @@ public class EbayJSDemo {
     @Test
     public void ebayJSDemo() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        String title = (String) js.executeScript("return document.title;");
+        System.out.println(title);
+        Assert.assertEquals(title, "Electronics, Cars, Fashion, Collectibles & More | eBay");
+
+
         //Just assume that below sendkeys is not working with standard method
         //driver.findElement(By.id("gh-ac")).sendKeys("iphone");
 
@@ -46,6 +52,10 @@ public class EbayJSDemo {
 
         Thread.sleep(3000);
         boolean resultSetDisplay = driver.findElement(By.cssSelector("[class='srp-results srp-list clearfix']")).isDisplayed();
+
+        //to scroll bottom
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        Thread.sleep(3000);
         Assert.assertTrue(resultSetDisplay);
 
     }
