@@ -25,9 +25,14 @@ public class EbayJSDemo {
     @Test
     public void ebayJSDemo() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        driver.findElement(By.id("gh-ac")).click();
-        driver.findElement(By.id("gh-ac")).clear();
-        driver.findElement(By.id("gh-ac")).sendKeys("iphone");
+        //Just assume that below sendkeys is not working with standard method
+        //driver.findElement(By.id("gh-ac")).sendKeys("iphone");
+
+        //So, we create webelement which we need to type
+        WebElement searchText = driver.findElement(By.id("gh-ac"));
+        //using arguments[0].value='<inout_value>' , type on that web element
+        js.executeScript("arguments[0].value='iphone'",searchText);
+
         Thread.sleep(3000);
         new Select(driver.findElement(By.id("gh-cat"))).selectByVisibleText("Cell Phones & Accessories");
         Thread.sleep(3000);
