@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -30,7 +31,14 @@ public class EbayJSDemo {
         Thread.sleep(3000);
         new Select(driver.findElement(By.id("gh-cat"))).selectByVisibleText("Cell Phones & Accessories");
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//span[text()='Search']")).click();
+        //Just assume that below button click is not working with standard method
+        //driver.findElement(By.xpath("//span[text()='Search']")).click();
+
+        //So, we create webelement which we need to click
+        WebElement searchButton = driver.findElement(By.xpath("//span[text()='Search']"));
+        //using "arguments[0].click()" , click on that web element
+        js.executeScript("arguments[0].click()", searchButton);
+
         Thread.sleep(3000);
         boolean resultSetDisplay = driver.findElement(By.cssSelector("[class='srp-results srp-list clearfix']")).isDisplayed();
         Assert.assertTrue(resultSetDisplay);
