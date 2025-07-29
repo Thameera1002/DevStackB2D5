@@ -24,11 +24,17 @@ public class EbayJSDemo {
 
     @Test
     public void ebayJSDemo() throws InterruptedException {
+        Thread.sleep(3000);
         JavascriptExecutor js = (JavascriptExecutor) driver;
-
+        js.executeScript("history.go(0);");
+        Thread.sleep(3000);
         String title = (String) js.executeScript("return document.title;");
         System.out.println(title);
         Assert.assertEquals(title, "Electronics, Cars, Fashion, Collectibles & More | eBay");
+
+        //assume that getText() is  not working
+//        String text = driver.findElement(By.cssSelector("[class='gh-categories__title']")).getText();
+//        System.out.println(text);
 
 
         //Just assume that below sendkeys is not working with standard method
@@ -36,6 +42,7 @@ public class EbayJSDemo {
 
         //So, we create webelement which we need to type
         WebElement searchText = driver.findElement(By.id("gh-ac"));
+        js.executeScript("arguments[0].style.border = '1px solid red'", searchText);
         //using arguments[0].value='<inout_value>' , type on that web element
         js.executeScript("arguments[0].value='iphone'",searchText);
 
@@ -47,6 +54,7 @@ public class EbayJSDemo {
 
         //So, we create webelement which we need to click
         WebElement searchButton = driver.findElement(By.xpath("//span[text()='Search']"));
+        js.executeScript("arguments[0].style.border = '1px solid red'", searchButton);
         //using "arguments[0].click()" , click on that web element
         js.executeScript("arguments[0].click()", searchButton);
 
@@ -57,7 +65,8 @@ public class EbayJSDemo {
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         Thread.sleep(3000);
         Assert.assertTrue(resultSetDisplay);
-
+        js.executeScript("alert('Test Alert');");
+        Thread.sleep(3000);
     }
 
     @AfterMethod
